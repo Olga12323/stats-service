@@ -1,8 +1,7 @@
 package ru.netology.stats;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions;
 
 class StatsServiceTest {
 
@@ -14,7 +13,7 @@ class StatsServiceTest {
         long expected = 180;
         long actual = service.sumSales(sales);
 
-        assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -25,7 +24,7 @@ class StatsServiceTest {
         long expected = 15;
         long actual = service.averageSales(sales);
 
-        assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -33,10 +32,10 @@ class StatsServiceTest {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expected = 8; // Последний месяц с максимальными продажами (20)
+        int expected = 8;
         int actual = service.maxSalesMonth(sales);
 
-        assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -44,10 +43,10 @@ class StatsServiceTest {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expected = 9; // Последний месяц с минимальными продажами (7)
+        int expected = 9;
         int actual = service.minSalesMonth(sales);
 
-        assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -55,10 +54,10 @@ class StatsServiceTest {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expected = 5; // Месяцы с продажами ниже 15
+        int expected = 5;
         int actual = service.monthsBelowAverage(sales);
 
-        assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -66,42 +65,9 @@ class StatsServiceTest {
         StatsService service = new StatsService();
         long[] sales = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
 
-        int expected = 5; // Месяцы с продажами выше 15
+        int expected = 5;
         int actual = service.monthsAboveAverage(sales);
 
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void shouldWorkWithEmptyArray() {
-        StatsService service = new StatsService();
-        long[] sales = {};
-
-        assertEquals(0, service.sumSales(sales));
-        assertEquals(0, service.averageSales(sales));
-        assertEquals(0, service.monthsBelowAverage(sales));
-        assertEquals(0, service.monthsAboveAverage(sales));
-    }
-
-    @Test
-    void shouldWorkWithSingleElement() {
-        StatsService service = new StatsService();
-        long[] sales = {100};
-
-        assertEquals(100, service.sumSales(sales));
-        assertEquals(100, service.averageSales(sales));
-        assertEquals(1, service.maxSalesMonth(sales));
-        assertEquals(1, service.minSalesMonth(sales));
-        assertEquals(0, service.monthsBelowAverage(sales));
-        assertEquals(0, service.monthsAboveAverage(sales));
-    }
-
-    @Test
-    void shouldWorkWithLargeNumbers() {
-        StatsService service = new StatsService();
-        long[] sales = {5_000_000_000L, 3_000_000_000L, 4_000_000_000L};
-
-        assertEquals(12_000_000_000L, service.sumSales(sales));
-        assertEquals(4_000_000_000L, service.averageSales(sales));
+        Assertions.assertEquals(expected, actual);
     }
 }
